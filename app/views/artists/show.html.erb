@@ -9,12 +9,14 @@
   <ul>
     <% @artist.albums.each do |album| %>
       <li><%= album.title %> |
-        <%=link_to "Edit Artist", edit_artist_task_path(@artist, genre) %> |
-        <%=link_to "Delete", artist_genre_path(@artist, genre),
+        <%=link_to "Edit Artist", edit_artist_path(@artist, album) %> |
+        <%=link_to "Delete", artist_album_path(@artist, album),
           :data => {:confirm => "Are you sure?", :method => "delete"} %>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p>No genres yet</p>
+  <p>No albums yet</p>
 <% end %>
+
+<p><%= link_to "Add new album", new_artist_album_path(@artist) %></p>
