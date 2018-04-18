@@ -1,15 +1,15 @@
 <h1><%= @artist.name %></h1>
-<p><%= link_to "Edit", edit_artist_path(@artist) %></p>
+<p><%= link_to "Edit Artist", edit_artist_path(@artist) %></p>
 <p><%= link_to "Return to Artists", artists_path %></p>
 <p><%= link_to "Delete", artist_path(@artist),
   :data => {:confirm => "Are you sure?",
     :method => "delete"} %></p>
 
-<% if @artist.genres.any? %>
+<% if @artist.albums.any? %>
   <ul>
-    <% @artist.genres.each do |genre| %>
-      <li><%= genre.description %> |
-        <%=link_to "Edit", edit_artist_task_path(@artist, genre) %> |
+    <% @artist.albums.each do |album| %>
+      <li><%= album.title %> |
+        <%=link_to "Edit Artist", edit_artist_task_path(@artist, genre) %> |
         <%=link_to "Delete", artist_genre_path(@artist, genre),
           :data => {:confirm => "Are you sure?", :method => "delete"} %>
       </li>
@@ -18,5 +18,3 @@
 <% else %>
   <p>No genres yet</p>
 <% end %>
-
-<p><%= link_to "Add a genre", new_artist_genre_path(@artist) %></p>

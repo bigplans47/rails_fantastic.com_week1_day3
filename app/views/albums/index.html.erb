@@ -1,0 +1,10 @@
+<h1>Albums</h1>
+
+<ul>
+  <% @artists.each do |single_artist| %>
+    <li><%= link_to single_artist.name, edit_artist_path(single_artist) %></li>
+    <%= single_artist.genre %>
+  <% end %>
+</ul>
+
+<p><%= link_to "Add New Artist", new_artist_path %></p>

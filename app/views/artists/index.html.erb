@@ -2,8 +2,7 @@
 
 <ul>
   <% @artists.each do |single_artist| %>
-    <li><%= link_to single_artist.name, edit_artist_path(single_artist) %></li>
-    <%= single_artist.genre %>
+    <li><%= link_to single_artist.name, artist_path(single_artist) %> | <%= single_artist.genre %></li>
   <% end %>
 </ul>
 
