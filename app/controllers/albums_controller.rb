@@ -13,35 +13,38 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def index
+    @artists = Artist.all
+    render :index
+  end
 
-  # def index
-  #   @artists = Artist.all
-  #   render :index
-  # end
-  #
-  # def show
-  #   @artist = Artist.find(params[:id])
-  #   render :show
-  # end
-  #
-  # def edit
-  #   @artist = Artist.find(params[:id])
-  #   render :edit
-  # end
-  #
-  # def update
-  #   @artist = Artist.find(params[:id])
-  #   if @artist.update(artist_params)
-  #     redirect_to artists_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-  #
+  def show
+    @artist = Artist.find(params[:id])
+    @album = Album.find(params[:id])
+    render :show
+  end
+
+  def edit
+    @artist = Artist.find(params[:artist_id])
+    @album = Album.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @artist = Artist.find(params[:artist_id])
+    @album = Album.find(params[:id])
+    if @album.update(album_params)
+      redirect_to artist_path(@artist)
+    else
+      render :edit
+    end
+  end
+
   def destroy
+    @artist = Artist.find(params[:artist_id])
     @album = Album.find(params[:id])
     @album.destroy
-    redirect_to artist_path
+    redirect_to artist_path(@artist)
   end
 
   private

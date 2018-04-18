@@ -9,7 +9,7 @@
   <ul>
     <% @artist.albums.each do |album| %>
       <li><%= album.title %> |
-        <%=link_to "Edit Artist", edit_artist_path(@artist, album) %> |
+        <%=link_to "Edit Album", edit_artist_album_path(@artist, album) %> |
         <%=link_to "Delete", artist_album_path(@artist, album),
           :data => {:confirm => "Are you sure?", :method => "delete"} %>
       </li>
