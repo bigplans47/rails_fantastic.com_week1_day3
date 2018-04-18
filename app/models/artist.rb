@@ -1,4 +1,3 @@
 class Artist < ActiveRecord::Base
-  validates :name, :presence => true
-
+  validates :name, :genre, :presence => true
 end
