@@ -44,17 +44,18 @@
 #   end
 # end
 
+
 Artist.destroy_all
 Album.destroy_all
 
 25.times do |i|
-  Artist.create!(name: Faker::Coffee.blend_name, genre: Faker::VForVendetta.quote)
+  Artist.create!(name: Faker::FamilyGuy.character, genre: Faker::Seinfeld.quote)
   @artist_id = Artist.last.id
   5.times do |i|
     @review = Faker::ChuckNorris.fact
-    @title = Faker::Coffee.blend_name
+    title = Faker::Coffee.blend_name
     @year = Faker::VForVendetta.quote
-    Album.create!(review: @review, year: @year, title: @title, :artist_id => @artist_id)
+    Album.create!(review: @review, year: @year, title: title, :artist_id => @artist_id)
   end
 end
 
