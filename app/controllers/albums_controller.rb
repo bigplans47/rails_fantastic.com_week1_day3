@@ -7,6 +7,7 @@ class AlbumsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @album = @artist.albums.new(album_params)
     if @album.save
+      flash[:notice] = "Album successfully added!"
       redirect_to artist_path(@artist)
     else
       render :new
