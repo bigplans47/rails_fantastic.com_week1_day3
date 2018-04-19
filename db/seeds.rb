@@ -36,17 +36,28 @@
 #   end
 # end
 
+# 25.times do |index|
+#   Artist.create!(name: Faker::Coffee.blend_name, genre: Faker::VForVendetta.quote)
+#
+#   5.times do |index|
+#     Album.create!(review: , year: Faker::Number.between(1, 10), title: )
+#   end
+# end
 
 Artist.destroy_all
 Album.destroy_all
 
-25.times do |index|
+25.times do |i|
   Artist.create!(name: Faker::Coffee.blend_name, genre: Faker::VForVendetta.quote)
+  @artist_id = Artist.last.id
+  5.times do |i|
+    @review = Faker::ChuckNorris.fact
+    @title = Faker::Coffee.blend_name
+    @year = Faker::VForVendetta.quote
+    Album.create!(review: @review, year: @year, title: @title, :artist_id => @artist_id)
+  end
 end
 
-5.times do |index|
-  Album.create!(review: Faker::ChuckNorris.fact, year: Faker::Number.between(1, 10), title: Faker::Coffee.blend_name)
-end
 
 p "Created #{Artist.count} artists"
 p "Created #{Album.count} albums"
