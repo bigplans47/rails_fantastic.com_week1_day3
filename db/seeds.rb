@@ -25,7 +25,7 @@ artists_seed = [
 ]
 
 artists_seed.each do |name_seed, genre_seed, albums_seed|
-  temp_artist = Artist.create( name: name_seed, genre: genre_seed )
+  temp_artist = Artist.create( :name => name_seed, genre: genre_seed )
   albums_seed.each do |year_seed, title_seed, review_seed|
     temp_album = Album.new
     temp_album.year = year_seed
