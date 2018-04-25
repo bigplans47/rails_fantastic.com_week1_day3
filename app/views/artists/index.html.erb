@@ -1,11 +1,15 @@
 <div class="jumbotron">
   <h1>Artists</h1>
 </div>
+<%= render "layouts/menu" %>
 <p><%= link_to "Make new account", new_user_registration_path%></p>
-<%= current_user %>
-<%= current_user.email %>
-<%= image_tag "dog.jpeg" %>
 
+<% if current_user %>
+  <%= current_user %>
+  <%= current_user.email %>
+<% end %>
+
+<%= image_tag "dog.jpeg" %>
 <ul>
   <% @artists.each do |single_artist| %>
     <li><%= link_to single_artist.name, artist_path(single_artist) %> | <%= single_artist.genre %></li>
