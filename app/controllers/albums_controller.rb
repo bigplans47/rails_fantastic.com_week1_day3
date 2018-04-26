@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :authenticate_user!, :only => [:new, :edit]
+  p :authenticate_user
   def new
     @artist = Artist.find(params[:artist_id])
     @album = @artist.albums.new
