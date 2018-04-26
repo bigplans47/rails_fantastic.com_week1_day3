@@ -1,6 +1,10 @@
 class AlbumsController < ApplicationController
-  before_action :authenticate_user!, :only => [:new, :edit]
-  p :authenticate_user
+  # before_action :authenticate_user!, :only => [:new, :edit]
+  before_action :only => [:new, :edit] do
+    redirect_to new_user_session_path unless current_user && current_user.admin
+    p current_user.admin
+  end
+  # p :authenticate_user
   def new
     @artist = Artist.find(params[:artist_id])
     @album = @artist.albums.new

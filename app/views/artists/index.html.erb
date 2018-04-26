@@ -17,6 +17,9 @@
       <% end %>
     </ul>
 
-    <p><%= link_to "Add New Artist", new_artist_path %></p>
+    <% if current_user && current_user.admin %>
+      <p><%= link_to "Admin Add New Artist", new_artist_path %></p>
+    <% end %>
+
   </div>
 </div>
